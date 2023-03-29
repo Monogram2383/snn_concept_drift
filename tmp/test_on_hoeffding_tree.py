@@ -11,5 +11,5 @@ stream = SEAGenerator(
 )
 
 model = HoeffdingTreeClassifier()
-_, accuracy = train_model(model, stream, enable_drift=True)
+_, accuracy = train_model(model, stream,num_of_iterations=2000, enable_drift=True)
 print(f'last acc: {accuracy[-1]: 0.2f}, avg acc: {np.mean(accuracy): 0.2f}, max acc: {np.max(accuracy): 0.2f}')
