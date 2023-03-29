@@ -13,7 +13,7 @@ class SingleLayerLIF(nn.Module):
         self.layers = nn.Sequential(
             layer.Flatten(),
             layer.Linear(n_input, n_output, bias=False),
-            neuron.LIFNode(init_tau=tau, surrogate_function=surrogate.ATan())
+            neuron.LIFNode(tau=tau, surrogate_function=surrogate.ATan())
         )
 
     def forward(self, x: torch.Tensor):
