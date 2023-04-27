@@ -66,7 +66,7 @@ def train_snn_model(model, stream, num_of_iterations=NUM_OF_ITERATIONS, T=100, e
         # model.partial_fit(x, y_true)
 
         # After optimizing the parameters, the state of the network should be reset because the neurons of the SNN have “memory”.
-        # functional.reset_net(model)
+        functional.reset_net(model)
 
         if enable_drift and i % drift_step == 0:
             drifts.append(i)

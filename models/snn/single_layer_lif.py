@@ -13,11 +13,25 @@ class SingleLayerLIF(nn.Module):
         self.layers = nn.Sequential(
             layer.Flatten(),
             layer.Linear(n_input, n_output, bias=False),
-            neuron.ParametricLIFNode(init_tau=tau,
-                                     # v_threshold=1,v_reset=-10,
-                                     # surrogate_function=surrogate.ATan()
-                                     )
+            neuron.ParametricLIFNode(
+                init_tau=tau,
+                surrogate_function=surrogate.ATan()
+            ),
         )
+        # self.layers = nn.Sequential(
+        #     layer.Flatten(),
+        #     layer.Linear(n_input, 5, bias=False),
+        #     neuron.LIFNode(
+        #         tau=tau,
+        #         surrogate_function=surrogate.ATan()
+        #     ),
+        #     # layer.Flatten(),
+        #     layer.Linear(5, n_output, bias=False),
+        #     neuron.LIFNode(
+        #         tau=tau,
+        #         surrogate_function=surrogate.ATan()
+        #     ),
+        # )
 
     def forward(self, x: torch.Tensor):
         return self.layers(x)
